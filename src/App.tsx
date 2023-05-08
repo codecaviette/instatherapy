@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import './App.css';
 import Remedies from './Remedies';
+import Levels from './Levels';
 
-interface remediesAllLevels {
+interface remedies {
   '0': string[];
   '1': string[];
   '2': string[];
@@ -17,7 +18,7 @@ interface remediesAllLevels {
 }
 
 function App() {
-  const [remediesAllLevels, setRemediesAllLevels] = useState<remediesAllLevels>({
+  const [remedies, setRemedies] = useState<remedies>({
     '0': [
       'Breathe deeply',
       'Meditate for 10 minutes',
@@ -75,10 +76,24 @@ function App() {
     ],
   });
 
+  const [level, setLevel] = useState<number>(0);
+
+  // Define fxn to set/update level state based on input
+  // Once passed to Levels as prop, need to include the following in Levels comp for receiving function as prop:
+    // interface Props {
+    //   onLevelChange: (level: number) => void;
+    // }
+  const updateLevel = ( selectedLevel: number ) => {
+    setLevel(selectedLevel);
+  } 
+
+  // Define fxn to filter for only remedies that match a given level; pass this as prop "remedies" to Remedies comp
+
 
   return (
     <div>
-      <Remedies remediesSingleLevel={remediesAllLevels[0]} />
+      <Levels onSubmit={updateLevel} />  
+      <Remedies remedies={remedies[0]} />
     </div>
   );
 }
