@@ -96,7 +96,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className='app'>
       <Levels onUpdateLevel={updateLevel} />  
       <Remedies remedies={remediesForSelectedLevel(level)} />
     </div>
