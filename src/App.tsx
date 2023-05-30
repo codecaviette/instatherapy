@@ -66,18 +66,19 @@ function App() {
       'Exercise for 20 minutes',
     ],
     9: [
-      'Breathe deeply',
-      'Meditate for 10 minutes',
-      'Exercise for 20 minutes',
+      'Breathe deeply: In for 1, hold for 4, out for 2',
+      'Remove yourself from the situation',
+      'Remember that this too shall pass',    
     ],
     10: [
-      'Breathe deeply',
-      'Meditate for 10 minutes',
-      'Exercise for 20 minutes',
+      'Breathe deeply: In for 1, hold for 4, out for 2',
+      'Remove yourself from the situation',
+      'Remember that this too shall pass',
     ],
   });
 
   const [level, setLevel] = useState<number>(0);
+  const [levelSelected, setLevelSelected] = useState<boolean>(false);   // only load Remedies comp when this is true
 
   // Define fxn to set/update level state based on input
   // Once passed to Levels as prop, need to include the following in Levels comp for receiving function as prop:
@@ -85,8 +86,8 @@ function App() {
     //   onLevelChange: (level: number) => void;
     // }
   const updateLevel = ( selectedLevel: number ) => {
-    console.log(selectedLevel)
     setLevel(selectedLevel);
+    setLevelSelected(true);
   } 
 
   // Define fxn to filter for only remedies that match a given level; pass this as prop "remedies" to Remedies comp
@@ -98,7 +99,10 @@ function App() {
   return (
     <div className='app'>
       <Levels onUpdateLevel={updateLevel} />  
-      <Remedies remedies={remediesForSelectedLevel(level)} />
+      { levelSelected && 
+        <Remedies remedies={remediesForSelectedLevel(level)} />
+      }
+      
     </div>
   );
 }

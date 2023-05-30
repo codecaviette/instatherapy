@@ -10,7 +10,8 @@
 
 .border {
     border-style: solid;
-    border-radius: 15px;
+    border-radius: 12px;
+    font-size: 20px;
     color: white;
     font-weight: bold;
 }
@@ -18,4 +19,10 @@
 .btn-level {
     font-weight: bold;
     background-color: transparent;
+}
+
+.btn-level:hover,
+.btn-level:focus  {
+    background-color: grey;
+    outline: 2px solid white;
 }

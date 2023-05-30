@@ -15,10 +15,14 @@ function Levels({ onUpdateLevel }: Props) {
   return (
     <div className='levels-container'>
       <div>
-        <h2>Hello! I'm glad you're here.</h2>
-        <h2> What is your current anxiety level?</h2>
+        <h2>Hello! I'm glad you're here. <br></br>
+        What is your current anxiety level? <br></br>
+        (0 = calm , 10 = panic attack)
+        </h2>
+        
       </div>
       <div className='border'>
+      
         {' '}
         {/* Add scale */}
         {/* Display each level as a button by looping through levels array; each should have event handler in case it's clicked */}
